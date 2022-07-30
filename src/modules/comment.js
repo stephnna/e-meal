@@ -2,7 +2,7 @@ export default class Meal {
   // Initialization
   constructor() {
     this.API_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=British';
-    this.INV_API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
+    this.INV_API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/L6BclbNP7aRwyZ5T1wFt/comments';
     this.mealPopup = document.getElementById('meals-popup');
   }
 
@@ -110,13 +110,13 @@ export default class Meal {
       },
       body: JSON.stringify(data),
     });
-    this.getComment(commentId, index);
+    this.getComment(commentId, index);    
     return response;
   }
 
   //  Get comments
   getComment = async (commentId, index) => {
-    const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps//comments?item_id=item${index}`);
+    const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/L6BclbNP7aRwyZ5T1wFt/comments?item_id=item${index}`);
     const comments = await response.text().catch((error) => new Error(error));
     const commentsData = JSON.parse(comments);
     if (commentsData.error === undefined) {
