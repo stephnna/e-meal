@@ -1,15 +1,13 @@
-import _ from 'lodash';
 import './style.css';
+import Meal from './modules/comment.js';
 
-function component() {
-  const element = document.createElement('div');
+import './images/meal1.jpg';
+import './images/meal2.jpg';
+import './images/meal3.jpg';
+import './images/meal4.jpg';
+import './images/meal5.jpg';
+import './images/close.svg';
+import './images/meal-screnshot.png';
 
-  // Lodash, currently included via a script, is required for this line to work
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
-
-  return element;
-}
-
-document.body.appendChild(component());
+const niceMeal = new Meal();
+niceMeal.getMeal();

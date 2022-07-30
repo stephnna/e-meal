@@ -1,3 +1,434 @@
-.hello {
-  color: red;
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+:root {
+  --Dark-Blue: hsl(209, 23%, 22%);
+  --Very-Dark-Blue: hsl(207, 26%, 17%);
+  --Very-Dark-Black: hsl(200, 15%, 8%);
+  --Dark-Gray: hsl(0, 0%, 52%);
+  --Very-Light-Gray: hsl(0, 0%, 98%);
+  --White: hsl(0, 0%, 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--Very-Dark-Blue);
+}
+
+.global {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: goldenrod;
+  padding: 0 1rem;
+}
+
+.logo {
+  background-image: url('./images/S&L-logo.png');
+  height: 100px;
+  width: 100px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-top: 1rem;
+}
+
+.comment-container {
+  font-family: cursive, Geneva, Tahoma, sans-serif;
+  background-color: rgb(1, 41, 59);
+  box-shadow: 5px 5px 10px rgb(43, 73, 100);
+  border: 1px solid rgb(85, 120, 150);
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-radius: 3rem;
+  text-align: center;
+  color: goldenrod;
+}
+
+.comment-count {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.order-num {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.comment-h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0.5rem 0;
+}
+
+.right-header,
+.logo {
+  display: flex;
+  list-style-type: none;
+}
+
+.footer a,
+footer p {
+  color: goldenrod;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.right-header li a {
+  margin-left: 16px;
+  color: goldenrod;
+  text-decoration: none;
+}
+
+.meal-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.5rem;
+  margin-top: 6rem;
+}
+
+.card .card-image {
+  background-color: rgb(20, 13, 78);
+  height: 13rem;
+  width: 100%;
+  border-radius: 1rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card {
+  border-radius: 0.5rem;
+  background-color: var(--Dark-Blue);
+  box-shadow: 5px 5px 10px rgb(43, 73, 100);
+  border: 1px solid rgb(85, 120, 150);
+}
+
+.first-part h2 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.like-part span {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.like-part {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.like-icon {
+  cursor: pointer;
+  color: goldenrod;
+  transition: all 0.3s linear;
+  background: none;
+  border: none;
+}
+
+.fa-heart {
+  margin-right: 0.3rem;
+}
+
+.fa-heart:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.second-part button {
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: var(--Dark-Blue);
+  color: var(--White);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--Dark-Gray);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.second-part button:hover {
+  background-color: goldenrod;
+  color: var(--White);
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.card .card-content {
+  padding: 0 0.5rem;
+  background-color: var(--Dark-Blue);
+  border-radius: 0.5rem;
+  color: goldenrod;
+}
+
+.first-part,
+.second-part {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0.5rem;
+}
+
+.carousel-item {
+  height: 45rem;
+}
+
+.footer {
+  background-color: var(--Dark-Blue);
+  color: goldenrod;
+}
+
+.copyright {
+  background-color: var(--Very-Dark-Blue);
+  text-align: center;
+  padding-top: 1.5rem;
+}
+
+.footer-content {
+  background-color: var(--Dark-Blue);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  align-items: center;
+  color: goldenrod;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.sl img {
+  height: 40%;
+  width: 70%;
+}
+
+.address span,
+.more-info span,
+.open-hours span {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.address h2,
+.more-info h2,
+.open-hours h2 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-decoration: underline;
+  text-transform: uppercase;
+}
+
+.modal-container {
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: goldenrod;
+  transition: 0.4s;
+  z-index: 1;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 1rem auto;
+}
+
+.modalContainer img {
+  width: 80%;
+  height: 30%;
+  object-fit: fill;
+  border-radius: 0.5rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hide {
+  display: none;
+}
+
+.close {
+  cursor: pointer;
+  margin-bottom: 16px;
+  padding-left: 0;
+  float: right;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+}
+
+.comment-btn {
+  background-color: var(--Very-Dark-Blue);
+  color: var(--White);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--Dark-Gray);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(87, 85, 85, 0.1);
+}
+
+.comment-btn:hover {
+  background-color: goldenrod;
+  color: var(--White);
+}
+
+@media screen and (max-width: 1120px) {
+  .card-content {
+    width: 100%;
+  }
+
+  .card .card-content {
+    padding: 0 0.5rem;
+  }
+
+  .meal-cards {
+    padding: 0 2rem;
+  }
+
+  .first-part,
+  .second-part {
+    flex-direction: column;
+  }
+
+  .second-part button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .like-part {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 650px) and (max-width: 835px) {
+  .meal-cards {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 3rem;
+  }
+
+  .card .card-content {
+    padding: 0 0.5rem;
+  }
+
+  .first-part,
+  .second-part {
+    flex-direction: column;
+  }
+
+  .second-part button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .like-part {
+    margin-bottom: 0;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sl,
+  .address,
+  .open-hours,
+  .more-info {
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  body {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  nav .display-none {
+    display: none;
+  }
+
+  .meal-cards {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 5%;
+  }
+
+  .card .card-content {
+    padding: 0 0.5rem;
+  }
+
+  .first-part,
+  .second-part {
+    flex-direction: column;
+  }
+
+  .second-part button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .like-part {
+    margin-bottom: 0;
+  }
+
+  .carousel-item {
+    height: 20rem;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sl,
+  .address,
+  .open-hours,
+  .more-info {
+    margin-bottom: 2rem;
+  }
 }
