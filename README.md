@@ -62,8 +62,9 @@ To get a local copy up and running follow these simple example steps:
 ## Setup
 - `https://github.com/stephnna/e-meal.git`
 - `cd e-meal/`
-- Install packages:  `npm install`
-- Start Live Server: `npm run dev`
+- `npm install`
+- `npm run build`
+- `npm start`
 
 -Follow the HTML-CSS linter confuguration to docs to setup linters [Link to Microverse linter docs](https://github.com/microverseinc/linters-config)
 

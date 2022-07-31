@@ -1,3 +1,4 @@
+"use strict";
 /*
  * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
  * This devtool is neither made for production nor for readable output files.
@@ -6,9 +7,7 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
+(self["webpackChunke_meal"] = self["webpackChunke_meal"] || []).push([["main"],{
 
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/style.css":
 /*!*************************************************************!*\
@@ -146,7 +145,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ MealHome)\n/* harmony export */ });\nclass MealHome {\n  // Initialization\n  constructor() {\n    this.API_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=British';\n    this.INV_API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/L6BclbNP7aRwyZ5T1wFt/likes';\n    this.mealCards = document.getElementById('meal-cards');\n  }\n\n  // Get meals from API, throw error if promise was not resoved\n  //  otherwise display meal if the page loads\n getMealHome = async () => {\n   const response = await fetch(this.API_URL);\n   const data = await response.json().catch((error) => new Error(error));\n   this.displayMeal(data);\n };\n\n //  display meals on Api\n displayMeal = (data) => {\n   document.getElementById('item-counter').innerHTML = data.length;\n   let cardContainer = '';\n   data.meals.forEach((item, index) => {\n     const cardContent = `\n    <div class=\"card\">\n    <div class=\"card-image\">\n            <img src=\"${item.strMealThumb}\"/>\n            </div>\n            <div class=\"card-content\">\n             <div class=\"first-part\">\n              <h2>${item.strMeal} (${index + 1})</h2>\n              <div class='like-part strMeal'>\n              <i class=\"fa-solid fa-heart like-icon\" id='likes${index}'></i> \n              <span class='like-count' id=\"count${index}\"></span>\n              </div>\n             </div>\n              <div class=\"second-part\">\n              <button class=\"comment-meal\">Comment</button>\n              <button class=\"reserve-meal\">Reservation</button>\n              </div>\n            </div>\n            </div>\n            `;\n     cardContainer += cardContent;\n   });\n\n   this.mealCards.innerHTML = cardContainer;\n   const selectAlllikes = document.querySelectorAll('.like-count');\n   selectAlllikes.forEach((item, likesId) => {\n     this.getCounts(likesId);\n   });\n   this.incrementLikes();\n }\n\n//  display counts\ndisplayCount = (countsData, likesId) => {\n  const likesContainer = document.getElementById(`count${likesId}`);\n  const filtered = countsData.filter((ele) => ele.item_id === `item${likesId}`);\n  filtered.forEach((item) => {\n    likesContainer.innerHTML = `${item.likes} likes`;\n    if (item.likes === 1) {\n      likesContainer.innerHTML = '1 like';\n    }\n  });\n  if (likesContainer.innerHTML.trim() === '') {\n    likesContainer.innerHTML = '0 like';\n  }\n}\n\n//  Increment likes if the heart icon is cliked\nincrementLikes = () => {\n  const selectAllHeart = document.querySelectorAll('.fa-heart');\n  selectAllHeart.forEach((item, likesId) => {\n    item.addEventListener('click', () => {\n      const creatLikes = { item_id: `item${likesId}` };\n      const likesString = JSON.stringify(creatLikes);\n      const data = JSON.parse(likesString);\n      this.addCount(data, likesId);\n    });\n  });\n}\n\n  // Add Likes\n  addCount = async (data, likesId) => {\n    const response = await fetch(this.INV_API_URL, {\n      method: 'POST',\n      headers: {\n        'Content-type': 'application/json',\n      },\n      body: JSON.stringify(data),\n    });\n    this.getCounts(likesId);\n    return response;\n  }\n\n  //  fetc count from involvment api\n    getCounts = async (likesId) => {\n      const response = await fetch(this.INV_API_URL);\n      const counts = await response.text().catch((error) => new Error(error));\n      const countsData = JSON.parse(counts);\n      this.displayCount(countsData, likesId);\n    }\n}\n\n\n//# sourceURL=webpack://e-meal/./src/modules/home.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ MealHome)\n/* harmony export */ });\nclass MealHome {\n  // Initialization\n  constructor() {\n    this.API_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=British';\n    this.INV_API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/L6BclbNP7aRwyZ5T1wFt/likes';\n    this.mealCards = document.getElementById('meal-cards');\n  }\n\n  // Get meals from API, throw error if promise was not resoved\n  //  otherwise display meal if the page loads\n getMealHome = async () => {\n   const response = await fetch(this.API_URL);\n   const data = await response.json().catch((error) => new Error(error));\n   this.displayMeal(data);\n };\n\n //  display meals on Api\n displayMeal = (data) => {\n   let cardContainer = '';\n   data.meals.forEach((item, index) => {\n     const cardContent = `\n    <div class=\"card\">\n    <div class=\"card-image\">\n            <img src=\"${item.strMealThumb}\"/>\n            </div>\n            <div class=\"card-content\">\n             <div class=\"first-part\">\n              <h2>${item.strMeal} (${index + 1})</h2>\n              <div class='like-part strMeal'>\n              <i class=\"fa-solid fa-heart like-icon\" id='likes${index}'></i> \n              <span class='like-count' id=\"count${index}\"></span>\n              </div>\n             </div>\n              <div class=\"second-part\">\n              <button class=\"comment-meal\">Comment</button>\n              <button class=\"reserve-meal\">Reservation</button>\n              </div>\n            </div>\n            </div>\n            `;\n     cardContainer += cardContent;\n   });\n\n   this.mealCards.innerHTML = cardContainer;\n   const selectAlllikes = document.querySelectorAll('.like-count');\n   document.getElementById('item-counter').innerHTML = `(${selectAlllikes.length})`;\n   selectAlllikes.forEach((item, likesId) => {\n     this.getCounts(likesId);\n   });\n   this.incrementLikes();\n }\n\n//  display counts\ndisplayCount = (countsData, likesId) => {\n  const likesContainer = document.getElementById(`count${likesId}`);\n  const filtered = countsData.filter((ele) => ele.item_id === `item${likesId}`);\n  filtered.forEach((item) => {\n    likesContainer.innerHTML = `${item.likes} likes`;\n    if (item.likes === 1) {\n      likesContainer.innerHTML = '1 like';\n    }\n  });\n  if (likesContainer.innerHTML.trim() === '') {\n    likesContainer.innerHTML = '0 like';\n  }\n}\n\n//  Increment likes if the heart icon is cliked\nincrementLikes = () => {\n  const selectAllHeart = document.querySelectorAll('.fa-heart');\n  selectAllHeart.forEach((item, likesId) => {\n    item.addEventListener('click', () => {\n      const creatLikes = { item_id: `item${likesId}` };\n      const likesString = JSON.stringify(creatLikes);\n      const data = JSON.parse(likesString);\n      this.addCount(data, likesId);\n    });\n  });\n}\n\n  // Add Likes\n  addCount = async (data, likesId) => {\n    const response = await fetch(this.INV_API_URL, {\n      method: 'POST',\n      headers: {\n        'Content-type': 'application/json',\n      },\n      body: JSON.stringify(data),\n    });\n    this.getCounts(likesId);\n    return response;\n  }\n\n  //  fetc count from involvment api\n    getCounts = async (likesId) => {\n      const response = await fetch(this.INV_API_URL);\n      const counts = await response.text().catch((error) => new Error(error));\n      const countsData = JSON.parse(counts);\n      this.displayCount(countsData, likesId);\n    }\n}\n\n\n//# sourceURL=webpack://e-meal/./src/modules/home.js?");
 
 /***/ }),
 
@@ -240,118 +239,9 @@ eval("module.exports = __webpack_require__.p + \"assets/images/meal5.jpg\";\n\n/
 
 /***/ })
 
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			id: moduleId,
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/publicPath */
-/******/ 	(() => {
-/******/ 		__webpack_require__.p = "/";
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	(() => {
-/******/ 		__webpack_require__.b = document.baseURI || self.location.href;
-/******/ 		
-/******/ 		// object to store loaded and loading chunks
-/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {
-/******/ 			"main": 0
-/******/ 		};
-/******/ 		
-/******/ 		// no chunk on demand loading
-/******/ 		
-/******/ 		// no prefetching
-/******/ 		
-/******/ 		// no preloaded
-/******/ 		
-/******/ 		// no HMR
-/******/ 		
-/******/ 		// no HMR manifest
-/******/ 		
-/******/ 		// no on chunks loaded
-/******/ 		
-/******/ 		// no jsonp function
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/nonce */
-/******/ 	(() => {
-/******/ 		__webpack_require__.nc = undefined;
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
-/******/ 	
-/******/ })()
-;
+},
+/******/ __webpack_require__ => { // webpackRuntimeModules
+/******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+/******/ var __webpack_exports__ = (__webpack_exec__("./src/index.js"));
+/******/ }
+]);
