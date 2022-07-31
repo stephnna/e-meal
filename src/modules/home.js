@@ -6,7 +6,7 @@ export default class MealHome {
     this.mealCards = document.getElementById('meal-cards');
   }
 
-  // Get meals from Api, throw error if promise was not resoved
+  // Get meals from API, throw error if promise was not resoved
   //  otherwise display meal if the page loads
  getMealHome = async () => {
    const response = await fetch(this.API_URL);
