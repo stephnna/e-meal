@@ -31,9 +31,6 @@ Make JavaScript code synchronous.
 - Javascript 
 - Webpack
 - API
-## Deployment
-
-[Live view](https://stephnna.github.io/e-meal/dist/)
 
 ## Project requirements 
 Please find project requirements [here](https://github.com/microverseinc/curriculum-javascript/blob/main/group-capstone/js_capstone.md). 
@@ -51,7 +48,7 @@ The Meal DB web application allows users to like, comment, and make a reservatio
 
 
 ## Live Demo
-[Live demo here]()
+[Live demo here](https://stephnna.github.io/e-meal/dist/)
 
 ## Getting started
 To get a local copy up and running follow these simple example steps:
