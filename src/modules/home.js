@@ -16,7 +16,6 @@ export default class MealHome {
 
  //  display meals on Api
  displayMeal = (data) => {
-   document.getElementById('item-counter').innerHTML = data.length;
    let cardContainer = '';
    data.meals.forEach((item, index) => {
      const cardContent = `
@@ -44,6 +43,7 @@ export default class MealHome {
 
    this.mealCards.innerHTML = cardContainer;
    const selectAlllikes = document.querySelectorAll('.like-count');
+   document.getElementById('item-counter').innerHTML = `(${selectAlllikes.length})`;
    selectAlllikes.forEach((item, likesId) => {
      this.getCounts(likesId);
    });
