@@ -48,7 +48,7 @@ The Meal DB web application allows users to like, comment, and make a reservatio
 
 
 ## Live Demo
-[Live demo here](https://stephnna.github.io/e-meal/dist/)
+[Live demo here](https://stephnna.github.io/e-meal/)
 
 ## Getting started
 To get a local copy up and running follow these simple example steps:

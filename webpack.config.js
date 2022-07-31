@@ -16,7 +16,7 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    publicPath: '/',
+    publicPath: '/e-meal/',
   },
   module: {
     rules: [
