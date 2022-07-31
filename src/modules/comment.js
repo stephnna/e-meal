@@ -1,46 +1,46 @@
-export default class Meal {
+export default class Comment {
   // Initialization
   constructor() {
     this.API_URL = 'https://www.themealdb.com/api/json/v1/1/filter.php?a=British';
-    this.INV_API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
+    this.INV_API_URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/L6BclbNP7aRwyZ5T1wFt/comments';
     this.mealPopup = document.getElementById('meals-popup');
   }
 
   // Get meals from Api, throw error if promise was not resoved
   //  otherwise popup meal if comment button is clicked
 
- getMeal = async () => {
-   const response = await fetch(this.API_URL);
-   const data = await response.json().catch((error) => new Error(error));
-   this.popupMeal(data);
- };
+  fetchComment = async () => {
+    const response = await fetch(this.API_URL);
+    const data = await response.json().catch((error) => new Error(error));
+    this.popupMeal(data);
+  };
 
   //  Function that display meal when comment button is cloked
   popupMeal = (data) => {
-    const selectAllMeal = document.querySelectorAll('.sea-meal');
+    const selectAllMeal = document.querySelectorAll('.comment-meal');
     selectAllMeal.forEach((item, index) => {
       item.addEventListener('click', () => {
-        const mealContainer = document.createElement('section');
+        const mealContainer = document.createElement('div');
         mealContainer.className = 'modal-container';
         mealContainer.id = `${index}`;
         mealContainer.innerHTML = `
-      <div><img class="close" src="./images/close.svg" alt="close-button"></div> 
+      <div><img class="close" src="./assets/images/close.svg" alt="close-button"></div> 
        <div class="card-image">
        <img src="${data.meals[index].strMealThumb}">
        </div>
        <div class="card-content">
         <div class="first-part">
-         <h2>${data.meals[index].strMeal}</h2>      
+         <h2>${data.meals[index].strMeal} (${index + 1})</h2>      
          <span class="order-num">Order Number: ${data.meals[index].idMeal}</span>
          </div>       
         </div>                     
-        <div id="comment${index}"></div>
+        <div class="reserve" id="comment${index}"></div>
         <h2 class="comment-h2">Add a comment</h2>
         <form id="form${index}">        
-        <input type="text" id="name${index}" placeholder="Your name"><br>
+        <input type="text" id="name${index}" placeholder="Your name" required><br>
         <textarea name="text-area" id="text${index}" class="text-area" placeholder="Your insights" rows="5" maxlength="500" required></textarea><br>
-        </form>
         <button class="comment-btn" type="button">Comment</button>
+        </form>        
        `;
         this.mealPopup.appendChild(mealContainer);
         const commentId = document.getElementById(`comment${index}`);
@@ -80,7 +80,7 @@ export default class Meal {
     let commentContainer = '';
     const commentCount = document.createElement('div');
     commentCount.className = 'comment-count';
-    commentCount.innerHTML = `Comment (${commentData.length})`;
+    commentCount.innerHTML = `Comments (${commentData.length})`;
     commentData.forEach((item) => {
       const commentContent = `      
        <div class="comment-container">${item.creation_date}<br>${item.username}: ${item.comment}</div>     
@@ -116,7 +116,7 @@ export default class Meal {
 
   //  Get comments
   getComment = async (commentId, index) => {
-    const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps//comments?item_id=item${index}`);
+    const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/L6BclbNP7aRwyZ5T1wFt/comments?item_id=item${index}`);
     const comments = await response.text().catch((error) => new Error(error));
     const commentsData = JSON.parse(comments);
     if (commentsData.error === undefined) {

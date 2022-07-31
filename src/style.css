@@ -44,7 +44,7 @@ nav {
 }
 
 .logo {
-  background-image: url('./images/S&L-logo.png');
+  background-image: url('./assets/images/S&L-logo.png');
   height: 100px;
   width: 100px;
   background-repeat: no-repeat;
@@ -60,7 +60,6 @@ nav {
   padding: 1rem 0;
   margin-bottom: 1rem;
   border-radius: 3rem;
-  text-align: center;
   color: goldenrod;
 }
 
@@ -217,15 +216,20 @@ footer p {
 
 .copyright {
   background-color: var(--Very-Dark-Blue);
-  text-align: center;
   padding-top: 1.5rem;
+}
+
+.copyright,
+.reserve,
+.footer-content,
+.comment-container {
+  text-align: center;
 }
 
 .footer-content {
   background-color: var(--Dark-Blue);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  text-align: center;
   align-items: center;
   color: goldenrod;
   width: 100%;

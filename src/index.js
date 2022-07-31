@@ -1,13 +1,19 @@
 import './style.css';
-import Meal from './modules/comment.js';
+import MealHome from './modules/home.js';
+import Comment from './modules/comment.js';
+import Reservation from './modules/reservation.js';
+import './assets/images/meal1.jpg';
+import './assets/images/meal2.jpg';
+import './assets/images/meal3.jpg';
+import './assets/images/meal4.jpg';
+import './assets/images/meal5.jpg';
+import './assets/images/close.svg';
+import './assets/images/meal-screnshot.png';
 
-import './images/meal1.jpg';
-import './images/meal2.jpg';
-import './images/meal3.jpg';
-import './images/meal4.jpg';
-import './images/meal5.jpg';
-import './images/close.svg';
-import './images/meal-screnshot.png';
+const mealHomePage = new MealHome();
+const newComment = new Comment();
+const newReservation = new Reservation();
 
-const niceMeal = new Meal();
-niceMeal.getMeal();
+mealHomePage.getMealHome();
+newComment.fetchComment();
+newReservation.fetchReservation();
