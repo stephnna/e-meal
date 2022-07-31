@@ -9,8 +9,7 @@
     "start": "webpack serve --open",
     "server": "node server.js",
     "build": "webpack",
-    "dev": "webpack --watch",
-    "lint": "npx hint . && npx stylelint \"**/*.{css,scss}\" && npx eslint .",
+    "dev": "webpack --watch",    
     "deploy": "gh-pages -d dist"
   },
   "repository": {
