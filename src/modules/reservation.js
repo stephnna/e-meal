@@ -10,10 +10,10 @@ export default class Reservation {
   //  otherwise popup meal if comment button is clicked
 
   fetchReservation = async () => {
-   const response = await fetch(this.API_URL);
-   const data = await response.json().catch((error) => new Error(error));  
-   this.popupReserve(data);
- };
+    const response = await fetch(this.API_URL);
+    const data = await response.json().catch((error) => new Error(error));
+    this.popupReserve(data);
+  };
 
   //  Function that display meal when comment button is cloked
   popupReserve = (data) => {
@@ -30,16 +30,16 @@ export default class Reservation {
        </div>
        <div class="card-content">
         <div class="first-part">
-         <h2>${data.meals[index].strMeal} (${index+1})</h2>      
+         <h2>${data.meals[index].strMeal} (${index + 1})</h2>      
          <span class="order-num">Order Number: ${data.meals[index].idMeal}</span>
          </div>       
         </div>                     
         <div class="reserve" id="reserve${index}"></div>
         <h2 class="comment-h2">Add a reservation</h2>
         <form id="form${index}">        
-        <input type="text" id="name${index}" placeholder="Your name"><br>
-        <input type="text" id="stadate${index}" placeholder="Start date: YYYY-MM-DD"><br>
-        <input type="text" id="enddate${index}" placeholder="End date: YYYY-MM-DD"><br>        
+        <input type="text" id="name${index}" placeholder="Your name" required><br>
+        <input type="text" id="stadate${index}" placeholder="Start date: YYYY-MM-DD" required><br>
+        <input type="text" id="enddate${index}" placeholder="End date: YYYY-MM-DD" required><br>        
         <button class="comment-btn" type="button">Reserve</button>
         </form>
         
@@ -48,8 +48,7 @@ export default class Reservation {
         const commentId = document.getElementById(`reserve${index}`);
         this.getReserve(commentId, index);
         const comment = document.querySelectorAll('.comment-btn');
-       if(!this.addReserveOnPopup(comment, index)) return;
-       else 
+        this.addReserveOnPopup(comment, index);
         this.closeReserve(index);
       });
     });
@@ -65,24 +64,19 @@ export default class Reservation {
         const startValue = document.getElementById(`stadate${index}`).value;
         const endValue = document.getElementById(`enddate${index}`).value;
         const formId = document.getElementById(`form${index}`);
-        if (nameValue === '' || startValue === ''  || endValue === '') return;
+        if (nameValue === '' || startValue === '' || endValue === '') return;
 
         const commentData = {
           item_id: `item${index}`,
           username: nameValue,
           date_start: startValue,
-          date_end: endValue 
+          date_end: endValue,
         };
         const commentString = JSON.stringify(commentData);
-        const data = JSON.parse(commentString); 
-      
-        if(this.addReserve(data, commentId, index)) return;
-        else{
-          this.addReserve(data, commentId, index)
-          formId.reset(); 
-        }
-       
-                
+        const data = JSON.parse(commentString);
+        this.addReserve(data, commentId, index);
+        this.addReserve(data, commentId, index);
+        formId.reset();
       });
     });
   }
@@ -120,8 +114,8 @@ export default class Reservation {
         'Content-type': 'application/json',
       },
       body: JSON.stringify(data),
-    });    
-    this.getReserve(commentId, index);     
+    });
+    this.getReserve(commentId, index);
     return response;
   }
 
@@ -131,7 +125,7 @@ export default class Reservation {
     const comments = await response.text().catch((error) => new Error(error));
     const commentsData = JSON.parse(comments);
     if (commentsData.error === undefined) {
-      this.displayReserve(commentsData, commentId); 
-    }    
+      this.displayReserve(commentsData, commentId);
+    }
   }
 }

@@ -16,6 +16,7 @@ export default class MealHome {
 
  //  display meals on Api
  displayMeal = (data) => {
+   document.getElementById('item-counter').innerHTML = data.length;
    let cardContainer = '';
    data.meals.forEach((item, index) => {
      const cardContent = `
@@ -25,7 +26,7 @@ export default class MealHome {
             </div>
             <div class="card-content">
              <div class="first-part">
-              <h2>${item.strMeal} (${index+1})</h2>
+              <h2>${item.strMeal} (${index + 1})</h2>
               <div class='like-part strMeal'>
               <i class="fa-solid fa-heart like-icon" id='likes${index}'></i> 
               <span class='like-count' id="count${index}"></span>
@@ -66,7 +67,7 @@ displayCount = (countsData, likesId) => {
 
 //  Increment likes if the heart icon is cliked
 incrementLikes = () => {
-  const selectAllHeart = document.querySelectorAll('.fa-heart');  
+  const selectAllHeart = document.querySelectorAll('.fa-heart');
   selectAllHeart.forEach((item, likesId) => {
     item.addEventListener('click', () => {
       const creatLikes = { item_id: `item${likesId}` };
@@ -86,7 +87,7 @@ incrementLikes = () => {
       },
       body: JSON.stringify(data),
     });
-    this.getCounts(likesId);    
+    this.getCounts(likesId);
     return response;
   }
 
@@ -95,6 +96,6 @@ incrementLikes = () => {
       const response = await fetch(this.INV_API_URL);
       const counts = await response.text().catch((error) => new Error(error));
       const countsData = JSON.parse(counts);
-      this.displayCount(countsData, likesId);    
+      this.displayCount(countsData, likesId);
     }
 }

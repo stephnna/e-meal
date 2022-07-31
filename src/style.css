@@ -59,7 +59,7 @@ nav {
   border: 1px solid rgb(85, 120, 150);
   padding: 1rem 0;
   margin-bottom: 1rem;
-  border-radius: 3rem;  
+  border-radius: 3rem;
   color: goldenrod;
 }
 
@@ -219,12 +219,13 @@ footer p {
   padding-top: 1.5rem;
 }
 
-.copyright, 
-.reserve, 
-.footer-content, 
+.copyright,
+.reserve,
+.footer-content,
 .comment-container {
   text-align: center;
 }
+
 .footer-content {
   background-color: var(--Dark-Blue);
   display: grid;

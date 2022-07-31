@@ -10,10 +10,10 @@ export default class Comment {
   //  otherwise popup meal if comment button is clicked
 
   fetchComment = async () => {
-   const response = await fetch(this.API_URL);
-   const data = await response.json().catch((error) => new Error(error));
-   this.popupMeal(data);
- };
+    const response = await fetch(this.API_URL);
+    const data = await response.json().catch((error) => new Error(error));
+    this.popupMeal(data);
+  };
 
   //  Function that display meal when comment button is cloked
   popupMeal = (data) => {
@@ -30,14 +30,14 @@ export default class Comment {
        </div>
        <div class="card-content">
         <div class="first-part">
-         <h2>${data.meals[index].strMeal} (${index+1})</h2>      
+         <h2>${data.meals[index].strMeal} (${index + 1})</h2>      
          <span class="order-num">Order Number: ${data.meals[index].idMeal}</span>
          </div>       
         </div>                     
         <div class="reserve" id="comment${index}"></div>
         <h2 class="comment-h2">Add a comment</h2>
         <form id="form${index}">        
-        <input type="text" id="name${index}" placeholder="Your name"><br>
+        <input type="text" id="name${index}" placeholder="Your name" required><br>
         <textarea name="text-area" id="text${index}" class="text-area" placeholder="Your insights" rows="5" maxlength="500" required></textarea><br>
         <button class="comment-btn" type="button">Comment</button>
         </form>        
@@ -110,7 +110,7 @@ export default class Comment {
       },
       body: JSON.stringify(data),
     });
-    this.getComment(commentId, index);    
+    this.getComment(commentId, index);
     return response;
   }
 
