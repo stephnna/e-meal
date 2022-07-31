@@ -25,15 +25,15 @@ export default class MealHome {
             </div>
             <div class="card-content">
              <div class="first-part">
-              <h2>${item.strMeal}</h2>
+              <h2>${item.strMeal} (${index+1})</h2>
               <div class='like-part strMeal'>
               <i class="fa-solid fa-heart like-icon" id='likes${index}'></i> 
               <span class='like-count' id="count${index}"></span>
               </div>
              </div>
               <div class="second-part">
-              <button class="sea-meal">Comment</button>
-              <button>Reservation</button>
+              <button class="comment-meal">Comment</button>
+              <button class="reserve-meal">Reservation</button>
               </div>
             </div>
             </div>
